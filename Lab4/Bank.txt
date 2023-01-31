@@ -1,0 +1,59 @@
+
+	import java.util.Scanner;
+	import javax.swing.JOptionPane;
+	
+	public class Bank {
+	      public static void main(String[]args) {
+	    	  Scanner scan = new Scanner(System.in);
+	   System.out.printf(" Please Enter name, account number and balance \n");
+	     String name = scan.next();
+	     String accNum = scan.next();
+	     double balance = scan.nextDouble();
+	     BankAccount c1 = new BankAccount(name, accNum, balance);
+	    	 
+	  MainLoop:
+		  while(true) {
+			  System.out.println("\nPlease enter 1 to deposit \n 2 to withdraw \n 3 to display \n 4 to getbalance \n 0 to exit");
+			  int num = scan.nextInt();
+			  
+			  switch(num) {
+		         case 1: 
+
+		        String DepAmm = JOptionPane.showInputDialog("Enter the amount");
+		         double amm = Double.parseDouble(DepAmm);
+		         c1.deposit(amm);
+		         break;
+
+		         case 2:
+
+		        String WithAmm = JOptionPane.showInputDialog("Enter the amount");	
+		        double amm2 = Double.parseDouble(WithAmm);
+		        c1.withdraw(amm2);
+		         break;
+
+		         case 3:
+
+		       c1.display();
+		       break ;
+
+		         case 4 :
+
+		        	 c1.getBalance() ; 
+		        	 System.out.println(+balance) ;
+		        	 
+		         break;
+
+		        case 0: 
+//exit 
+		        	 break MainLoop;
+		          }
+		         
+	       }
+		  }
+	
+	      }
+	
+	
+	
+	
+	
