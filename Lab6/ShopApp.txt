@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class ShopApp {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String name = input.next();
+        shop s = new shop(name);
+        String  id,category;
+        double price;
+        int Qty;
+        int choice;
+        do {
+            System.out.println("\t\t\t\tMENU");
+            System.out.println(
+                    "1.view all\n2.View specific item\n3.to view a specific item\n4. to add item\n5.to sell item\n0.exit");
+            choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    s.viewAllItems();
+                    break;
+                case 2:
+                    System.out.println("Enter your category :");
+                    category = input.next();
+                    s.viewItem(category);
+                    break;
+                case 3:
+                    System.out.println("Enter your Id :");
+                    id = input.next();
+                    s.viewItem(id);
+                    break;
+                case  4:
+                    System.out.println("Enter name :");
+                    name = input.next();
+                    System.out.println("Enter id:");
+                    id = input.next();
+
+                    System.out.println("Enter category:");
+                    category = input.next();
+
+                    System.out.println("Enter price:");
+                    price = input.nextDouble();
+
+                    System.out.println("Enter Qty:");
+                    Qty = input.nextInt();
+                    s.addItem(name, id, category, price, Qty);
+
+                    break;
+                case 5:
+                    System.out.println("Enter Id");
+                    id = input.next();
+                    System.out.println("Enter Qty:");
+                    Qty = input.nextInt();
+                    s.sellItems(id, Qty);
+
+                    break;
+                case 0:
+                System.exit(0);
+                default:
+                System.out.println("Press wrong key!Try again and press 1-5");
+                    break;
+            }
+
+        } while (choice != 0);
+        input.close();
+
+    }
+}

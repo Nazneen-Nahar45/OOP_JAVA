@@ -1,0 +1,78 @@
+ import java.util.ArrayList;
+
+public class shop {
+    public String name;
+    ArrayList<items> items = new ArrayList<items>();
+
+    public shop(String name) {
+        this.name = name;
+    }
+
+    public void addItem(String name, String id, String category, double price, int count) {
+        int flag = 0;
+
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).id.equals(id)) {
+                items.get(i).quantity += count;
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) {
+            items.add(new items(name, id, category, price, count));
+        }
+
+    }
+    public void viewCatItem(String category) {
+        int flag = 0;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).id.equals(category)) {
+                items.get(i).display();
+                flag = 1;
+            }
+            break;
+        }
+        if (flag==0) {
+            System.out.println("No category found.You Pressed wrong id");
+        }
+    }
+
+    public void viewItem(String id) {
+        int flag = 0;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).id.equals(id)) {
+                items.get(i).display();
+                flag = 1;
+            }
+            break;
+        }
+        if (flag==0) {
+            System.out.println("No items found.You Pressed wrong id");
+        }
+    }
+    public void viewAllItems()
+    {
+        for (int i = 0; i < items.size(); i++) {
+            items.get(i).display();
+        }
+    }
+    public void sellItems(String id,int quantity)
+    {
+        int flag = 0;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).equals(id)) {
+
+                if (quantity<items.get(i).quantity) {
+                    
+                    items.get(i).quantity-=quantity;
+                    flag =1;
+                }
+            }
+            else{
+                System.out.println("Not enough");
+            }
+            break;
+        }
+        
+    }
+}
